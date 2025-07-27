@@ -6,7 +6,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Chart } from '../../shared/components/historical/chart/chart';
-import { InstrumentSelector } from '../../shared/components/historical/instrument-selector/instrument-selector';
+import { InstrumentSelector } from '../../shared/components/common/instrument-selector/instrument-selector';
 import { IntervalPeriodicitySelector } from '../../shared/components/historical/interval-periodicity-selector/interval-periodicity-selector';
 import { BarsSelector } from '../../shared/components/historical/bars-selector/bars-selector';
 import { TimeUnit } from '../../shared/types/bars.types';

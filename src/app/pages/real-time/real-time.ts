@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { InstrumentSelector } from '../../shared/components/historical/instrument-selector/instrument-selector';
+import { InstrumentSelector } from '../../shared/components/common/instrument-selector/instrument-selector';
 import { Chart } from '../../shared/components/real-time/chart/chart';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
