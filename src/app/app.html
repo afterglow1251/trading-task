@@ -1,0 +1,71 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null"
+  >
+    <div class="header-bar d-flex jc-between">
+      <div class="d-flex">
+        <div (click)="isCollapsed = !isCollapsed" style="cursor: pointer">
+          <img src="assets/images/logo.svg" alt="logo"/>
+        </div>
+        @if (!isCollapsed) {
+          <h1 class="text-white no-select">TradingView</h1>
+        }
+      </div>
+      @if (!isCollapsed) {
+        <div>
+          <span
+            class="header-trigger"
+            (click)="isCollapsed = !isCollapsed"
+            nz-tooltip
+            nzTooltipTitle="Close sidebar"
+          >
+            <nz-icon class="trigger" nzType="menu-fold"/>
+          </span>
+        </div>
+      }
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      @for (item of menuItems; track item.label) {
+        @if (item.children) {
+          <li nz-submenu [nzTitle]="item.label" [nzIcon]="item.icon" nzOpen>
+            <ul>
+              @for (child of item.children; track child.label) {
+                <li nz-menu-item [routerLink]="child.route" nzMatchRouter>
+                  <span nz-icon [nzType]="child.icon"></span>
+                  <span>{{ child.label }}</span>
+                </li>
+              }
+            </ul>
+          </li>
+        } @else {
+          <li nz-menu-item [routerLink]="item.route" nzMatchRouter>
+            <span nz-icon [nzType]="item.icon"></span>
+            <span>{{ item.label }}</span>
+          </li>
+        }
+      } @empty {
+        <li>Menu is empty</li>
+      }
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <!--    <nz-header>-->
+    <!--      <div class="app-header">-->
+    <!--        <div class="text-center">-->
+    <!--          sth-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </nz-header>-->
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,31 @@
+<app-historical-chart
+  [mode]="mode"
+  [interval]="interval"
+  [periodicity]="periodicity"
+/>
+
+<div class="mt-6">
+  <div class="d-flex jc-between">
+    <app-instrument-selector
+      [(instrumentId)]="selectedInstrument"
+      [(provider)]="selectedProvider"
+    />
+
+    <app-bars-selector
+      [(mode)]="mode"
+      [(barsCount)]="barsCount"
+      [(startDate)]="startDate"
+      [(endDate)]="endDate"
+      [(timeBack)]="timeBack"
+    />
+  </div>
+
+  <app-interval-periodicity-selector
+    [(interval)]="interval"
+    [(periodicity)]="periodicity"
+  />
+
+
+  <button class="mt-6" nz-button nzType="primary" (click)="onFilterApply()">Apply</button>
+</div>
+

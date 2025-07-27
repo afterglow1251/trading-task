@@ -1,0 +1,156 @@
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+
+  --color-white: @color-white;
+  --color-light-gray: @color-light-gray;
+}
+
+@color-white: #fff;
+@color-light-gray: #999;
+
+.text-white {
+  color: @color-white;
+}
+
+.text-light-gray {
+  color: @color-light-gray;
+}
+
+/* Flex helpers */
+.d-flex {
+  display: flex;
+}
+
+// Justify content
+.jc-start {
+  justify-content: flex-start;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.jc-between {
+  justify-content: space-between;
+}
+
+.jc-around {
+  justify-content: space-around;
+}
+
+.jc-evenly {
+  justify-content: space-evenly;
+}
+
+// Align items
+.ai-start {
+  align-items: flex-start;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.ai-end {
+  align-items: flex-end;
+}
+
+.ai-stretch {
+  align-items: stretch;
+}
+
+.ai-baseline {
+  align-items: baseline;
+}
+
+// Align text
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Spacing utilities
+.generate-spacing(@n, @i: 0) when (@i <= @n) {
+  .m-@{i} {
+    margin: var(~"--space-@{i}");
+  }
+  .mt-@{i} {
+    margin-top: var(~"--space-@{i}");
+  }
+  .mr-@{i} {
+    margin-right: var(~"--space-@{i}");
+  }
+  .mb-@{i} {
+    margin-bottom: var(~"--space-@{i}");
+  }
+  .ml-@{i} {
+    margin-left: var(~"--space-@{i}");
+  }
+
+  .p-@{i} {
+    padding: var(~"--space-@{i}");
+  }
+  .pt-@{i} {
+    padding-top: var(~"--space-@{i}");
+  }
+  .pr-@{i} {
+    padding-right: var(~"--space-@{i}");
+  }
+  .pb-@{i} {
+    padding-bottom: var(~"--space-@{i}");
+  }
+  .pl-@{i} {
+    padding-left: var(~"--space-@{i}");
+  }
+
+  .generate-spacing(@n, (@i + 1));
+}
+
+.generate-spacing(9);
+
+.generate-gap(@n, @i: 0) when (@i <= @n) {
+  .gap-@{i} {
+    gap: var(~"--space-@{i}");
+  }
+  .row-gap-@{i} {
+    row-gap: var(~"--space-@{i}");
+  }
+  .column-gap-@{i} {
+    column-gap: var(~"--space-@{i}");
+  }
+
+  .generate-gap(@n, (@i + 1));
+}
+
+.generate-gap(9);
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

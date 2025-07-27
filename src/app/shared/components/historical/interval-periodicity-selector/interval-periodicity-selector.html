@@ -1,0 +1,38 @@
+<div class="d-flex ai-center gap-4">
+  <nz-input-number
+    [(ngModel)]="interval"
+    (ngModelChange)="onIntervalChange($event)"
+    [nzMin]="1"
+    [nzStep]="1"
+    style="width: 90px"
+    [nzPrecision]="0"
+    (nzBlur)="onBlur()"
+    nz-tooltip="Choose Interval"
+    nzTooltipPlacement="top"
+  />
+
+  <nz-radio-group
+    [(ngModel)]="periodicity"
+    (ngModelChange)="onPeriodicityChange($event)"
+    nzButtonStyle="solid"
+  >
+    <label nz-radio-button nz-tooltip="1 minute" nzTooltipPlacement="top" [nzValue]="'minute'">
+      1m
+    </label>
+    <label nz-radio-button nz-tooltip="1 hour" nzTooltipPlacement="top" [nzValue]="'hour'">
+      1h
+    </label>
+    <label nz-radio-button nz-tooltip="1 day" nzTooltipPlacement="top" [nzValue]="'day'">
+      1d
+    </label>
+    <label nz-radio-button nz-tooltip="1 year" nzTooltipPlacement="top" [nzValue]="'year'">
+      1y
+    </label>
+  </nz-radio-group>
+
+  @if (this.interval) {
+    <nz-tag nzColor="blue" class="inline-tag">
+      {{ interval }} {{ getReadableUnit(periodicity) }} per bar
+    </nz-tag>
+  }
+</div>

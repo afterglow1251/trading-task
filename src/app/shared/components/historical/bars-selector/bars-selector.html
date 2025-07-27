@@ -1,0 +1,42 @@
+<nz-segmented
+  [nzOptions]="modeOptions"
+  [ngModel]="mode"
+  (ngModelChange)="onModeChange($event)"
+/>
+
+<div style="min-width: 320px;">
+  @switch (mode) {
+    @case ('countBack') {
+      <nz-input-number
+        [(ngModel)]="barsCount"
+        (ngModelChange)="barsCountChange.emit($event)"
+        [nzMin]="1"
+        [nzStep]="1"
+        style="width: 90px"
+        [nzPrecision]="0"
+        (nzBlur)="onBlur()"
+      />
+    }
+    @case ('dateRange') {
+      <nz-date-picker
+        [ngModel]="startDate"
+        (ngModelChange)="startDateChange.emit($event)"
+      ></nz-date-picker>
+
+      <nz-date-picker
+        [ngModel]="endDate"
+        (ngModelChange)="endDateChange.emit($event)"
+      ></nz-date-picker>
+    }
+    @case ('timeBack') {
+      <input
+        nz-input
+        [ngModel]="timeBack"
+        (ngModelChange)="timeBackChange.emit($event)"
+        style="width: 90px"
+        nz-tooltip="Format: days.hours:minutes:seconds (e.g., 1.12:30:00)"
+        nzTooltipPlacement="top"
+      />
+    }
+  }
+</div>

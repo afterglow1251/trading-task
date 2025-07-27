@@ -1,0 +1,57 @@
+<form [formGroup]="form" class="d-flex gap-4">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select
+        formControlName="instrumentId"
+        nzPlaceHolder="Select Instrument"
+        [nzShowSearch]="true"
+        [nzAllowClear]="true"
+        [nzFilterOption]="filterInstrument"
+        [nzLoading]="loading"
+        [nzDropdownRender]="dropdownRender"
+        nz-tooltip="Choose Instrument"
+        nzTooltipPlacement="bottom"
+        style="width: 200px"
+      >
+        @for (instrument of instruments; track instrument.id) {
+          <nz-option [nzValue]="instrument.id" [nzLabel]="instrument.symbol"></nz-option>
+        } @empty {
+          <nz-option nzDisabled nzLabel="No instruments"></nz-option>
+        }
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  @if (providers.length > 0) {
+    <nz-form-item>
+      <nz-form-control>
+        <nz-select
+          formControlName="provider"
+          nzPlaceHolder="Select Provider"
+          nz-tooltip="Choose Provider"
+          nzTooltipPlacement="bottom"
+          style="width: 200px">
+          @for (provider of providers; track provider) {
+            <nz-option [nzValue]="provider" [nzLabel]="provider"></nz-option>
+          } @empty {
+            <nz-option nzDisabled nzLabel="No providers"></nz-option>
+          }
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  }
+</form>
+
+<ng-template #dropdownRender>
+  <div class="p-2 text-center">
+    @if (loading) {
+      <i nz-icon nzType="loading" nzTheme="outline"></i>
+    } @else if (canLoadMore) {
+      <button nz-button nzSize="small" nzType="link" (click)="loadMore()">
+        Load More
+      </button>
+    } @else {
+      <span class="text-light-gray">No more instruments</span>
+    }
+  </div>
+</ng-template>

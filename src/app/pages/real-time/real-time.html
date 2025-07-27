@@ -1,0 +1,13 @@
+<app-real-time-chart
+  [instrumentId]="instrumentId"
+  [provider]="provider">
+</app-real-time-chart>
+
+<div class="mt-6">
+  <app-instrument-selector
+    [(instrumentId)]="instrumentId"
+    [(provider)]="provider">
+  </app-instrument-selector>
+</div>
+
+<button nz-button nzType="primary" (click)="onSubscribeClick()">Apply</button>
