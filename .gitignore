@@ -44,3 +44,5 @@ Thumbs.db
 
 # .env
 /src/environments
+
+.vscode
